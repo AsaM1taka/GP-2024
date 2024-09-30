@@ -1,41 +1,16 @@
-extends Sprite2D
+extends CharacterBody2D
 
+const SPEED = 300.0
+const JUMP_VELOCITY= -400.0
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+const TURN_RATE = 180
 
-@export var speed = 500
-@export var rot_speed = 500
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	
-	#rotate(deg_to_rad(rot_speed * delta))
-	#translate(Vector2(0, speed * delta))
+	var r = Input.get_axis("TURN_LEFT", "TURN_RIGHT")
+	print(r)
 	
-	#global_translate(Vector2(0, speed * delta))
-	var s = speed
-	var rs = rot_speed
-	if Input.is_key_pressed(KEY_SHIFT):
-		s= s * 10
-		rs= rs * 2
+	var rot = deg_to_rad(r * TURN_RATE * delta)
 	
-	if Input.is_key_pressed(KEY_UP):
-		translate(Vector2(0, -speed * delta))
-		rotate(deg_to_rad(-rot_speed * delta))
-	
-	if Input.is_key_pressed(KEY_DOWN):
-		translate(Vector2(0, speed * delta))
-		rotate(deg_to_rad(rot_speed * delta))
-	
-	if Input.is_key_pressed(KEY_RIGHT):
-		translate(Vector2(speed * delta, 0))
-		rotate(deg_to_rad(rot_speed * delta))
-		
-	if Input.is_key_pressed(KEY_LEFT):
-		translate(Vector2(-speed * delta, 0))
-		rotate(deg_to_rad(-rot_speed * delta))
-		
-	
-	pass
+	rotate(rot)
+	move_and_slide()
