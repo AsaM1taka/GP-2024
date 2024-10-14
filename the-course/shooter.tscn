@@ -1,14 +1,20 @@
-[gd_scene load_steps=9 format=3 uid="uid://bjjgdrew6l6ye"]
+[gd_scene load_steps=13 format=3 uid="uid://bjjgdrew6l6ye"]
 
 [ext_resource type="Texture2D" uid="uid://cyb1li5opi7vq" path="res://assets/PNG/Sprites/Astronauts/spaceAstronauts_012.png" id="1_o68ij"]
 [ext_resource type="Script" path="res://play.gd" id="1_qqrbu"]
 [ext_resource type="Texture2D" uid="uid://bdyamkhqs0oyj" path="res://assets/PNG/Sprites/Building/spaceBuilding_021.png" id="3_bnnyv"]
+[ext_resource type="Texture2D" uid="uid://dshwtemyav7kk" path="res://assets/PNG/Sprites/Building/spaceBuilding_019.png" id="3_taqn7"]
+[ext_resource type="Script" path="res://gun.gd" id="3_xed3n"]
 [ext_resource type="Script" path="res://mob.gd" id="4_u6htg"]
 [ext_resource type="Texture2D" uid="uid://behty5e063yby" path="res://assets/PNG/Sprites/Astronauts/spaceAstronauts_005.png" id="4_xuixt"]
+[ext_resource type="PackedScene" uid="uid://73w0xqlhqkfm" path="res://Bbullet.tscn" id="8_p7we5"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ewy2i"]
 radius = 23.0
 height = 46.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_k0hh5"]
+radius = 190.003
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_81osl"]
 radius = 20.0
@@ -29,7 +35,7 @@ offset_bottom = 644.0
 color = Color(0.18359, 0.18359, 0.18359, 1)
 
 [node name="Player" type="CharacterBody2D" parent="."]
-position = Vector2(434, 396)
+position = Vector2(432, 397)
 script = ExtResource("1_qqrbu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
@@ -40,7 +46,36 @@ shape = SubResource("CapsuleShape2D_ewy2i")
 position = Vector2(3, -2)
 texture = ExtResource("1_o68ij")
 
+[node name="Gun" type="Area2D" parent="Player"]
+position = Vector2(22, 9)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("3_xed3n")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Gun"]
+position = Vector2(-2, -5)
+shape = SubResource("CircleShape2D_k0hh5")
+
+[node name="WeaponPivot" type="Marker2D" parent="Player/Gun"]
+position = Vector2(-7, 1)
+rotation = -0.0644261
+
+[node name="Sprite2D" type="Sprite2D" parent="Player/Gun/WeaponPivot"]
+position = Vector2(4.18484, -2.73626)
+rotation = 1.6562
+scale = Vector2(0.72793, 0.578007)
+texture = ExtResource("3_taqn7")
+
+[node name="ShootingPoint" type="Marker2D" parent="Player/Gun/WeaponPivot/Sprite2D"]
+unique_name_in_owner = true
+position = Vector2(-0.737525, -19.0868)
+
+[node name="Timer" type="Timer" parent="Player/Gun"]
+wait_time = 0.3
+autostart = true
+
 [node name="Mob" type="CharacterBody2D" parent="."]
+collision_layer = 2
 script = ExtResource("4_u6htg")
 
 [node name="Sprite2D" type="Sprite2D" parent="Mob"]
@@ -133,3 +168,8 @@ shape = SubResource("RectangleShape2D_l1hnp")
 position = Vector2(-3, -7)
 scale = Vector2(1.82407, 1.36585)
 texture = ExtResource("3_bnnyv")
+
+[node name="Bullet" parent="." instance=ExtResource("8_p7we5")]
+unique_name_in_owner = true
+
+[connection signal="timeout" from="Player/Gun/Timer" to="Player/Gun" method="_on_timer_timeout"]
