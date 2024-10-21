@@ -20,6 +20,13 @@ func print_stuff():
 	
 func _process(delta: float) -> void:
 	print_stuff()
+	
+func _ready() -> void:
+	pass
+	
+func _process(delta: float) -> void:
+	
+	var to_player
 
 func _physics_process(delta: float) -> void:
 	
