@@ -85,6 +85,11 @@ texture = ExtResource("4_xuixt")
 position = Vector2(3, 0)
 shape = SubResource("CapsuleShape2D_81osl")
 
+[node name="Bullet" parent="." instance=ExtResource("8_p7we5")]
+unique_name_in_owner = true
+position = Vector2(454, 404)
+rotation = 1.5574
+
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(565, 123)
 
@@ -168,8 +173,5 @@ shape = SubResource("RectangleShape2D_l1hnp")
 position = Vector2(-3, -7)
 scale = Vector2(1.82407, 1.36585)
 texture = ExtResource("3_bnnyv")
-
-[node name="Bullet" parent="." instance=ExtResource("8_p7we5")]
-unique_name_in_owner = true
 
 [connection signal="timeout" from="Player/Gun/Timer" to="Player/Gun" method="_on_timer_timeout"]
