@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://bjqgr7gpx8ti8"]
+
+[ext_resource type="Script" path="res://playerr.gd" id="1_eh73g"]
+[ext_resource type="Script" path="res://evil.gd" id="2_n3n3k"]
+
+[node name="trig" type="Node2D"]
+
+[node name="Playerr" type="Sprite2D" parent="."]
+script = ExtResource("1_eh73g")
+
+[node name="evil" type="Sprite2D" parent="."]
+script = ExtResource("2_n3n3k")
