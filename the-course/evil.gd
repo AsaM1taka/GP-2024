@@ -2,7 +2,7 @@ extends Sprite2D
 
 @export var time = 5
 @export var speed = 10
-@onready var player = $".../Playerr"
+@onready var player = $"../Playerr"
 
 func _ready() -> void:
 	
