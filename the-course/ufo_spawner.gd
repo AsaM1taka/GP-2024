@@ -23,6 +23,8 @@ func spawn():
 		get_parent().add_child(ufo)
 		
 		
+		
+		
 func _ready() -> void:
 	# spawn()
 	pass 

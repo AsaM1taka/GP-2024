@@ -116,11 +116,10 @@ func _physics_process(delta: float) -> void:
 			e.emitting = true
 			ufo_count = ufo_count + 1
 			# delete the ufo
-			c.get_collider().queue_free()
-			# respawn the player
-			respawn()
-		else:
-			velocity = velocity * 0.99
+			c.get_collider().queue_free() 
+			var health_item = preload().instantiate()
+			health_item.global_position = self.global_position  # Position it at UFO's location
+			get_parent().add_child(health_item)  # Add it to the scene
 		
 	
 func _ready() -> void:
@@ -132,3 +131,5 @@ func _on_timer_timeout() -> void:
 	# allow the player to fire again
 	can_fire = true
 	pass # Replace with function body.
+	
+	
