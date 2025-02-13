@@ -114,14 +114,10 @@ func _physics_process(delta: float) -> void:
 			get_parent().add_child(e)
 			e.global_position = self.global_position
 			e.emitting = true
-			ufo_count = ufo_count + 1
+			ufo_count = ufo_count + 5
 			# delete the ufo
 			c.get_collider().queue_free() 
-			var health_item = preload().instantiate()
-			health_item.global_position = self.global_position  # Position it at UFO's location
-			get_parent().add_child(health_item)  # Add it to the scene
 		
-	
 func _ready() -> void:
 	respawn()
 	pass
