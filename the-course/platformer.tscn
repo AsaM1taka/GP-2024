@@ -1,0 +1,55 @@
+[gd_scene load_steps=6 format=3 uid="uid://b8ayxxari6w1k"]
+
+[ext_resource type="Texture2D" uid="uid://cjj75q2nwdqoo" path="res://assets/PNG/Sprites X2/Station/spaceStation_004.png" id="1_cmw8w"]
+[ext_resource type="Script" uid="uid://bk67dkblb08pb" path="res://jumpdude.gd" id="2_k1ntv"]
+[ext_resource type="Texture2D" uid="uid://bj6re60727j7e" path="res://assets/PNG/Sprites X2/Astronauts/spaceAstronauts_012.png" id="2_or1io"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_or1io"]
+size = Vector2(80, 56)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_k1ntv"]
+radius = 6.53473
+
+[node name="Node2D" type="Node2D"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(288, 651)
+scale = Vector2(2.92625, 1.63144)
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+texture = ExtResource("1_cmw8w")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_or1io")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+position = Vector2(604, 594)
+scale = Vector2(2.92625, 1.63144)
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D2"]
+texture = ExtResource("1_cmw8w")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+shape = SubResource("RectangleShape2D_or1io")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="."]
+position = Vector2(957, 587)
+scale = Vector2(2.92625, 1.63144)
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D3"]
+texture = ExtResource("1_cmw8w")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3"]
+shape = SubResource("RectangleShape2D_or1io")
+
+[node name="JUMPDUDE" type="CharacterBody2D" parent="."]
+position = Vector2(221, 532)
+script = ExtResource("2_k1ntv")
+
+[node name="Sprite2D" type="Sprite2D" parent="JUMPDUDE"]
+texture = ExtResource("2_or1io")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="JUMPDUDE"]
+position = Vector2(-10, 2)
+scale = Vector2(-6.33447, 7.49948)
+shape = SubResource("CircleShape2D_k1ntv")
