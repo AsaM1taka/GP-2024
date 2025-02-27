@@ -91,3 +91,4 @@ texture = ExtResource("7_6ryk2")
 shape = SubResource("CircleShape2D_alten")
 
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
+[connection signal="body_entered" from="ENEMYDUDE/Area2D" to="ENEMYDUDE" method="_on_area_2d_body_entered"]
