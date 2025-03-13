@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://5xmg4kyjea30"]
+[gd_scene load_steps=10 format=3 uid="uid://5xmg4kyjea30"]
 
 [ext_resource type="Script" uid="uid://byl3sew3vbcr5" path="res://shooter_game.gd" id="1_c5ar1"]
 [ext_resource type="AudioStream" uid="uid://boy36rslfnhmp" path="res://sounds/heroplanet.mp3" id="2_ejtda"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://nb8daasaeu3i" path="res://explosion.tscn" id="3_c5ar1"]
 [ext_resource type="Script" uid="uid://ck2i25kw3ks1m" path="res://ufo_spawner.gd" id="4_gm47b"]
 [ext_resource type="PackedScene" uid="uid://ck14xoiwnmh1v" path="res://enemy.tscn" id="7_ndjor"]
+[ext_resource type="Script" uid="uid://cdxw7gev424dy" path="res://dudeenemy.gd" id="8_8wc7a"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_8wc7a"]
 
@@ -76,3 +77,7 @@ count = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 shape = SubResource("WorldBoundaryShape2D_8wc7a")
+
+[node name="DUDEENEMY" type="CharacterBody2D" parent="."]
+script = ExtResource("8_8wc7a")
+speed = null
