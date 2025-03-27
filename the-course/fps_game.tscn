@@ -1,8 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://dygk4c04n4imt"]
+[gd_scene load_steps=16 format=3 uid="uid://dygk4c04n4imt"]
 
 [ext_resource type="Script" uid="uid://cce5vwskyjcd4" path="res://fps_dude.gd" id="1_cykxj"]
 [ext_resource type="Script" path="res://ammo_dude.gd" id="2_jkgwa"]
+[ext_resource type="Texture2D" uid="uid://bt5o0sr6peltq" path="res://addons/gdquest_gobot/model/gobot_gobot_diffuse.png" id="2_q41vd"]
 [ext_resource type="PackedScene" uid="uid://sjfix0ml77ca" path="res://gun.tscn" id="3_jkgwa"]
+[ext_resource type="PackedScene" uid="uid://kod0awm1ha4o" path="res://addons/gdquest_gobot/model/gobot.glb" id="5_1r5kd"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_o6d5r"]
 
@@ -22,6 +24,9 @@ ambient_light_source = 2
 ambient_light_color = Color(0.54099, 0.54099, 0.54099, 1)
 tonemap_mode = 2
 glow_intensity = 2.85
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7s0cy"]
+albedo_texture = ExtResource("2_q41vd")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o6d5r"]
 albedo_color = Color(0, 1, 0, 1)
@@ -64,6 +69,7 @@ shadow_enabled = true
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+material_override = SubResource("StandardMaterial3D_7s0cy")
 mesh = SubResource("PlaneMesh_jkgwa")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
@@ -110,5 +116,8 @@ size = Vector3(1, 3, 1)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.94063, -0.105891, -2.24836)
 operation = 2
 size = Vector3(1, 2, 2)
+
+[node name="gobot" parent="." instance=ExtResource("5_1r5kd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.0116, 0.00346243, 3.2185)
 
 [connection signal="body_entered" from="ammo" to="ammo" method="_on_body_entered"]
