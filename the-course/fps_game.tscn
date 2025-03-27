@@ -1,7 +1,7 @@
 [gd_scene load_steps=13 format=3 uid="uid://dygk4c04n4imt"]
 
 [ext_resource type="Script" uid="uid://cce5vwskyjcd4" path="res://fps_dude.gd" id="1_cykxj"]
-[ext_resource type="Script" uid="uid://cudw2yan6jjem" path="res://ammo_dude.gd" id="2_jkgwa"]
+[ext_resource type="Script" path="res://ammo_dude.gd" id="2_jkgwa"]
 [ext_resource type="PackedScene" uid="uid://sjfix0ml77ca" path="res://gun.tscn" id="3_jkgwa"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_o6d5r"]
