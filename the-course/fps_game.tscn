@@ -1,8 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://dygk4c04n4imt"]
+[gd_scene load_steps=14 format=3 uid="uid://dygk4c04n4imt"]
 
 [ext_resource type="Script" uid="uid://cce5vwskyjcd4" path="res://fps_dude.gd" id="1_cykxj"]
 [ext_resource type="Script" uid="uid://cudw2yan6jjem" path="res://ammo_dude.gd" id="2_jkgwa"]
 [ext_resource type="PackedScene" uid="uid://sjfix0ml77ca" path="res://gun.tscn" id="3_jkgwa"]
+[ext_resource type="Script" uid="uid://b5ip54irib8te" path="res://wall.gd" id="4_uiy6f"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_o6d5r"]
 
@@ -64,6 +65,7 @@ shadow_enabled = true
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.51075, -8.92805, 4.29166)
 mesh = SubResource("PlaneMesh_jkgwa")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
@@ -110,5 +112,8 @@ size = Vector3(1, 3, 1)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.94063, -0.105891, -2.24836)
 operation = 2
 size = Vector3(1, 2, 2)
+
+[node name="wall" type="Node3D" parent="."]
+script = ExtResource("4_uiy6f")
 
 [connection signal="body_entered" from="ammo" to="ammo" method="_on_body_entered"]
